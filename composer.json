@@ -1,0 +1,34 @@
+{
+    "name": "incremental/php-youtube",
+    "description": "A simple YouTube API wrapper library.",
+    "keywords": ["youtube", "api", "wrapper", "video", "incremental"],
+    "homepage": "https://www.github.com/incremental/php-youtube",
+    "type": "library",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeroen Seegers",
+            "email": "jeroen.seegers+github@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://www.github.com/incremental/php-youtube/issues",
+        "source": "https://www.github.com/incremental/php-youtube"
+    },
+    "require": {},
+    "require-dev": {
+        "php": ">=5.4",
+        "phpunit/phpunit": "^4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Incremental\\YouTube\\": "./src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Incremental\\YouTubeTest\\": "./tests"
+        }
+    }
+}
