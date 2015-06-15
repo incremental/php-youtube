@@ -11,13 +11,83 @@ class YouTube
     protected $apiKey;
 
     /**
+     * @access  private
+     * @var     string
+     */
+    private $baseUri = 'https://www.googleapis.com/youtube/v3';
+
+    /**
+     * @access  private
+     * @var     string
+     */
+    private $apiUri;
+
+    /**
      * @access  public
-     * @param   string  $apiKey An API key for communication with the YouTube API.
+     * @param   string  $apiKey An API key for communication with the API.
      * @return  void
      */
     public function __construct($apiKey)
     {
         $this->apiKey = $apiKey;
     }
-}
 
+    /**
+     * Returns a list of channel activity events that match the given channelId.
+     *
+     * For more in-depth info check out the YouTube API documentation at
+     * https://developers.google.com/youtube/v3/docs/activities/list.
+     *
+     * @access  public
+     * @param   array   $parameters An array of parameters to pass to the API.
+     * @throws  \InvalidArgumentException
+     * @return  array
+     */
+    public function listActivities($parameters)
+    {
+        $this->apiUri = $this->baseUri . '/activities';
+
+        if (empty($parameters) || !isset($parameters['part'])) {
+            throw new \InvalidArgumentException(
+                'Missing the required "part" parameter.'
+            );
+        }
+
+        if (!isset($parameters['channelId'])) {
+            throw new \InvalidArgumentException(
+                'Missing the required "channelId" parameter.'
+            );
+        }
+
+        $response = $this->callApi($parameters, 'GET');
+
+        return json_decode($response, true);
+    }
+
+    /**
+     * Perform a cURL call to the YouTube API using the $parameters payload and
+     * of method $method.
+     *
+     * @access  private
+     * @return  string
+     */
+    private function callApi($parameters, $method)
+    {
+        $handle = curl_init();
+
+        $finalUrl = $this->apiUri . '?' . http_build_query($parameters)
+                    . '&key=' . $this->apiKey;
+
+        curl_setopt_array($handle, [
+            CURLOPT_HEADER          => false,
+            CURLOPT_POST            => false,
+            CURLOPT_RETURNTRANSFER  => true,
+            CURLOPT_URL             => $finalUrl
+        ]);
+
+        $response = curl_exec($handle);
+        curl_close($handle);
+
+        return $response;
+    }
+}
