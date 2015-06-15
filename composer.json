@@ -16,9 +16,10 @@
         "issues": "https://www.github.com/incremental/php-youtube/issues",
         "source": "https://www.github.com/incremental/php-youtube"
     },
-    "require": {},
+    "require": {
+        "php": ">=5.4"
+    },
     "require-dev": {
-        "php": ">=5.4",
         "phpunit/phpunit": "^4.7"
     },
     "autoload": {
