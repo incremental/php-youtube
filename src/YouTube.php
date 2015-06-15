@@ -4,7 +4,6 @@ namespace Incremental\YouTube;
 
 class YouTube
 {
-    
     /**
      * @access  protected
      * @var     string
@@ -20,6 +19,5 @@ class YouTube
     {
         $this->apiKey = $apiKey;
     }
-
 }
 
