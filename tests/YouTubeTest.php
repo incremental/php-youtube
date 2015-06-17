@@ -29,7 +29,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException           \InvalidArgumentException
-     * @expectedExceptionMessage    Missing the required "channelId" parameter.
+     * @expectedExceptionMessage    Missing a required filter parameter
      */
     public function testListActivitiesThrowsExceptionOnMissingChannelIdParameter()
     {
@@ -44,5 +44,33 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#activityListResponse');
+    }
+
+    /**
+     * @expectedException           \InvalidArgumentException
+     * @expectedExceptionMessage    Missing the required "part" parameter.
+     */
+    public function testListChannelsThrowsExceptionOnMissingPartParameter()
+    {
+        $this->youtube->listChannels([]);
+    }
+
+    /**
+     * @expectedException           \InvalidArgumentException
+     * @expectedExceptionMessage    Missing a required filter parameter
+     */
+    public function testListChannelsThrowsExceptionOnMissingFilterParameter()
+    {
+        $this->youtube->listChannels(['part' => 'id']);
+    }
+
+    public function testListChannels()
+    {
+        $response = $this->youtube->listChannels([
+            'part'          => 'snippet',
+            'categoryId'    => 'GCQmVzdCBvZiBZb3VUdWJl'
+        ]);
+
+        $this->assertEquals($response['kind'], 'youtube#channelListResponse');
     }
 }

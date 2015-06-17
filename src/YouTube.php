@@ -27,6 +27,12 @@ class YouTube
     private $apiUri;
 
     /**
+     * @access  private
+     * @var     array
+     */
+    private $filters;
+
+    /**
      * @access  public
      * @param   string  $apiKey An API key for communication with the API.
      */
@@ -48,7 +54,8 @@ class YouTube
      */
     public function listActivities($parameters)
     {
-        $this->apiUri = $this->baseUri . '/activities';
+        $this->apiUri   = $this->baseUri . '/activities';
+        $this->filters  = ['channelId'];
 
         if (empty($parameters) || !isset($parameters['part'])) {
             throw new \InvalidArgumentException(
@@ -56,9 +63,34 @@ class YouTube
             );
         }
 
-        if (!isset($parameters['channelId'])) {
+        $response = $this->callApi($parameters);
+
+        return json_decode($response, true);
+    }
+
+    /**
+     * Returns a collection of zero or more channel resources that match the request criteria.
+     *
+     * For more in-depth info check out the YouTube API documentation at
+     * https://developers.google.com/youtube/v3/docs/channels/list.
+     *
+     * @access  public
+     * @param   array   $parameters An array of parameters to pass to the API.
+     * @throws  \InvalidArgumentException
+     * @return  array
+     */
+    public function listChannels($parameters)
+    {
+        $this->apiUri   = $this->baseUri . '/channels';
+        $this->filters  = [
+            'categoryId',
+            'forUsername',
+            'id',
+        ];
+
+        if (empty($parameters) || !isset($parameters['part'])) {
             throw new \InvalidArgumentException(
-                'Missing the required "channelId" parameter.'
+                'Missing the required "part" parameter.'
             );
         }
 
@@ -77,20 +109,46 @@ class YouTube
      */
     private function callApi($parameters)
     {
-        $handle = curl_init();
+        $this->checkFilters($parameters);
 
-        $finalUrl = $this->apiUri . '?' . http_build_query($parameters) . '&key=' . $this->apiKey;
+        $handle     = curl_init();
+        $finalUrl   = $this->apiUri . '?' . http_build_query($parameters) . '&key=' . $this->apiKey;
 
         curl_setopt_array($handle, [
-            CURLOPT_HEADER          => false,
-            CURLOPT_POST            => false,
-            CURLOPT_RETURNTRANSFER  => true,
-            CURLOPT_URL             => $finalUrl
+            CURLOPT_HEADER         => false,
+            CURLOPT_POST           => false,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_URL            => $finalUrl,
         ]);
 
         $response = curl_exec($handle);
         curl_close($handle);
 
         return $response;
+    }
+
+    /**
+     * Check if at least one of the filters currently set in $this->filters occurs
+     * in $parameters.
+     *
+     * @access  private
+     * @param   array   $parameters An array of properties passed to the called method.
+     * @throws  \InvalidArgumentException
+     */
+    private function checkFilters($parameters)
+    {
+        $atLeastOneFilterSet = false;
+
+        foreach ($this->filters as $filter) {
+            if (array_key_exists($filter, $parameters)) {
+                $atLeastOneFilterSet = true;
+            }
+        }
+
+        if (!$atLeastOneFilterSet) {
+            throw new \InvalidArgumentException(
+                'Missing a required filter parameter (' . join(', ', $this->filters) . ').'
+            );
+        }
     }
 }

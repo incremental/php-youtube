@@ -6,7 +6,8 @@ This library aims at providing an easy-to-use wrapper for the non-OAuth YouTube 
 ---
 
 ## Supported actions
-- [youtube.activities.list](#youtube.activities.list)
+- [youtube.activities.list](#youtubeactivitieslist)
+- [youtube.channels.list](#youtubechannelslist)
 
 ---
 
@@ -48,6 +49,54 @@ print_r($response);
  *                     [kind] => youtube#activity
  *                     [etag] => "eYE31WLho912TfxEBDDRSwEQ5Ms/WcC5XzEdaxXmLhsuZ1s9_CBqix8"
  *                     [id] => VTE0MzQwNDMxMDYxNDAxNDY3MTQzNjM5MjA=
+ *                 )
+ *
+ *         )
+ *
+ * )
+ */
+```
+
+---
+
+### youtube.channels.list
+Returns a collection of zero or more channel resources that match the request criteria.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/channels/list](https://developers.google.com/youtube/v3/docs/channels/list).
+
+```php
+<?php
+
+use Incremental\Youtube\YouTube;
+
+$youtube = new YouTube('YOUR_API_KEY');
+$response = $youtube->listChannels([
+    'part'       => 'id',
+    'channelId'  => 'GCQmVzdCBvZiBZb3VUdWJl',
+    'maxResults' => 1
+]);
+
+print_r($response);
+
+/**
+ * Array
+ * (
+ *     [kind] => youtube#channelListResponse
+ *     [etag] => "eYE31WLho912TfxEBDDRSwEQ5Ms/vScTfQD3jJn-MzW5d9kDHIJU61w"
+ *     [nextPageToken] => CAEQAA
+ *     [pageInfo] => Array
+ *         (
+ *             [totalResults] => 11
+ *             [resultsPerPage] => 1
+ *         )
+ *
+ *     [items] => Array
+ *         (
+ *             [0] => Array
+ *                 (
+ *                     [kind] => youtube#channel
+ *                     [etag] => "eYE31WLho912TfxEBDDRSwEQ5Ms/sgkeX05nlECWsuF-d1WorqhxJVQ"
+ *                     [id] => UCF0pVplsI8R5kcAqgtoRqoA
  *                 )
  *
  *         )
