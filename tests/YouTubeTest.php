@@ -6,7 +6,7 @@ use Incremental\YouTube\YouTube;
 class YouTubeTest extends \PHPUnit_Framework_TestCase
 {
 
-    private $youtube = null;
+    private $youtube;
 
     public function setup()
     {
@@ -19,7 +19,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException           InvalidArgumentException
+     * @expectedException           \InvalidArgumentException
      * @expectedExceptionMessage    Missing the required "part" parameter.
      */
     public function testListActivitiesThrowsExceptionOnMissingPartParameter()
@@ -28,7 +28,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException           InvalidArgumentException
+     * @expectedException           \InvalidArgumentException
      * @expectedExceptionMessage    Missing the required "channelId" parameter.
      */
     public function testListActivitiesThrowsExceptionOnMissingChannelIdParameter()
@@ -45,5 +45,4 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($response['kind'], 'youtube#activityListResponse');
     }
-
 }

@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Incremental\\YouTube\\": "./src"
+            "Incremental\\YouTube\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Incremental\\YouTubeTest\\": "./tests"
+            "Incremental\\YouTubeTest\\": "tests/"
         }
     }
 }

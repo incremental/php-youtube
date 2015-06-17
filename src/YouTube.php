@@ -1,7 +1,11 @@
 <?php
-
 namespace Incremental\YouTube;
 
+/**
+ * An easy-to-use wrapper for the non-OAuth YouTube API (v3) endpoints.
+ *
+ * @package Incremental\YouTube
+ */
 class YouTube
 {
     /**
@@ -25,7 +29,6 @@ class YouTube
     /**
      * @access  public
      * @param   string  $apiKey An API key for communication with the API.
-     * @return  void
      */
     public function __construct($apiKey)
     {
@@ -59,7 +62,7 @@ class YouTube
             );
         }
 
-        $response = $this->callApi($parameters, 'GET');
+        $response = $this->callApi($parameters);
 
         return json_decode($response, true);
     }
@@ -69,14 +72,14 @@ class YouTube
      * of method $method.
      *
      * @access  private
+     * @param   array   $parameters An array of parameters to pass to the API.
      * @return  string
      */
-    private function callApi($parameters, $method)
+    private function callApi($parameters)
     {
         $handle = curl_init();
 
-        $finalUrl = $this->apiUri . '?' . http_build_query($parameters)
-                    . '&key=' . $this->apiKey;
+        $finalUrl = $this->apiUri . '?' . http_build_query($parameters) . '&key=' . $this->apiKey;
 
         curl_setopt_array($handle, [
             CURLOPT_HEADER          => false,
