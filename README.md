@@ -8,6 +8,7 @@ This library aims at providing an easy-to-use wrapper for the non-OAuth YouTube 
 ## Supported actions
 - [youtube.activities.list](#youtubeactivitieslist)
 - [youtube.channels.list](#youtubechannelslist)
+- [youtube.channelSections.list](#youtubechannelsectionslist)
 
 ---
 
@@ -102,6 +103,56 @@ print_r($response);
  *                     [etag] => "eYE31WLho912TfxEBDDRSwEQ5Ms/sgkeX05nlECWsuF-d1WorqhxJVQ"
  *                     [id] => UCF0pVplsI8R5kcAqgtoRqoA
  *                 )
+ *
+ *         )
+ *
+ * )
+ */
+```
+
+---
+
+### youtube.channelsections.list
+Returns a list of channelSection resources that match the request criteria.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/channelSections/list](https://developers.google.com/youtube/v3/docs/channelSections/list).
+
+```php
+<?php
+
+require_once('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
+
+$youtube = new YouTube('YOUR_API_KEY');
+$response = $youtube->listChannelSections([
+    'part'       => 'id',
+    'channelId'  => 'GCQmVzdCBvZiBZb3VUdWJl',
+]);
+
+print_r($response);
+
+/**
+ * Array
+ * (
+ *    [kind] => youtube#channelSectionListResponse
+ *    [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/4JnIcJTNhW-8qjW5Xh2gRXpVNh8"
+ *    [items] => Array
+ *        (
+ *            [0] => Array
+ *                (
+ *                    [kind] => youtube#channelSection
+ *                    [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/Yf2NnAr2mk7seya0WwQIJgvb5H4"
+ *                    [id] => UCVHFbqXqoYvEWM1Ddxl0QDg.__WLXNpu6u8
+ *                    [snippet] => Array
+ *                        (
+ *                            [type] => singlePlaylist
+ *                            [style] => horizontalRow
+ *                            [channelId] => UCVHFbqXqoYvEWM1Ddxl0QDg
+ *                            [position] => 0
+ *                        )
+ *
+ *                )
  *
  *         )
  *
