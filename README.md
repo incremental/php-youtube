@@ -9,6 +9,7 @@ This library aims at providing an easy-to-use wrapper for the non-OAuth YouTube 
 - [youtube.activities.list](#youtubeactivitieslist)
 - [youtube.channels.list](#youtubechannelslist)
 - [youtube.channelSections.list](#youtubechannelsectionslist)
+- [youtube.comments.list](#youtubecommentslist)
 
 ---
 
@@ -153,6 +154,67 @@ print_r($response);
  *                        )
  *
  *                )
+ *
+ *         )
+ *
+ * )
+ */
+```
+
+---
+
+### youtube.channelsections.list
+Returns a list of channelSection resources that match the request criteria.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/channelSections/list](https://developers.google.com/youtube/v3/docs/channelSections/list).
+
+```php
+<?php
+
+require_once('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
+
+$youtube = new YouTube('YOUR_API_KEY');
+$response = $youtube->listComments([
+    'part'       => 'id',
+    'channelId'  => 'z131gtcqbqbft5y3x22jfvmoakf3ezfsi',
+    'maxResults' => 1,
+]);
+
+print_r($response);
+
+/**
+ * Array
+ * (
+ *     [kind] => youtube#commentListResponse
+ *     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/KvDc44tTYD2s9ds4AFEycO3Q8bc"
+ *     [items] => Array
+ *         (
+ *             [0] => Array
+ *                 (
+ *                     [kind] => youtube#comment
+ *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/NT_mT1tS97oiFpYL9u0uAlkaJzI"
+ *                     [id] => z131gtcqbqbft5y3x22jfvmoakf3ezfsi
+ *                     [snippet] => Array
+ *                         (
+ *                             [textDisplay] => Check it out! Google came by our office to film an <span class="proflinkWrapper"><span class="proflinkPrefix">+</span><a class="proflink" href="https://plus.google.com/104629412415657030658" oid="104629412415657030658">Android</a></span> case study about Trello.
+ *                             [authorDisplayName] => Trello
+ *                             [authorProfileImageUrl] => https://lh3.googleusercontent.com/-sq03Zg4NAlg/AAAAAAAAAAI/AAAAAAAABQg/UiifHc3dYCo/photo.jpg?sz=50
+ *                             [authorChannelUrl] => http://www.youtube.com/channel/UCRcOkXoOrU6sN1yCz20VmQw
+ *                             [authorChannelId] => Array
+ *                                 (
+ *                                     [value] => UCRcOkXoOrU6sN1yCz20VmQw
+ *                                 )
+ *                             [authorGoogleplusProfileUrl] => https://plus.google.com/103127084407107005900
+ *                             [canRate] =>
+ *                             [viewerRating] => none
+ *                             [likeCount] => 55
+ *                             [publishedAt] => 2015-06-11T19:18:14.117Z
+ *                             [updatedAt] => 2015-06-11T19:18:14.117Z
+ *                         )
+ *
+ *                 )
  *
  *         )
  *

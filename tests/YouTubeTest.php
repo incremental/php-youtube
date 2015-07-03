@@ -101,4 +101,32 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($response['kind'], 'youtube#channelSectionListResponse');
     }
+
+    /**
+     * @expectedException           \InvalidArgumentException
+     * @expectedExceptionMessage    Missing the required "part" parameter.
+     */
+    public function testListCommentsThrowsExceptionOnMissingPartParameter()
+    {
+        $this->youtube->listComments([]);
+    }
+
+    /**
+     * @expectedException           \InvalidArgumentException
+     * @expectedExceptionMessage    Missing a required filter parameter
+     */
+    public function testListCommentsThrowsExceptionOnMissingFilterParameter()
+    {
+        $this->youtube->listComments(['part' => 'id']);
+    }
+
+    public function testListComments()
+    {
+        $response = $this->youtube->listComments([
+            'part'  => 'snippet',
+            'id'    => 'z131gtcqbqbft5y3x22jfvmoakf3ezfsi'
+        ]);
+
+        $this->assertEquals($response['kind'], 'youtube#commentListResponse');
+    }
 }
