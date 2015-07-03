@@ -10,6 +10,7 @@ This library aims at providing an easy-to-use wrapper for the non-OAuth YouTube 
 - [youtube.channels.list](#youtubechannelslist)
 - [youtube.channelSections.list](#youtubechannelsectionslist)
 - [youtube.comments.list](#youtubecommentslist)
+- [youtube.commentThreads.list](#youtubecommentthreadslist)
 
 ---
 
@@ -189,7 +190,52 @@ print_r($response);
  *                     [id] => z131gtcqbqbft5y3x22jfvmoakf3ezfsi
  *                 )
  *         )
- *
+ * )
+ */
+```
+
+---
+
+### youtube.commentthreads.list
+Returns a list of comment threads that match the request criteria.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/commentThreads/list](https://developers.google.com/youtube/v3/docs/commentThreads/list).
+
+```php
+<?php
+
+require_once('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
+
+$youtube = new YouTube('YOUR_API_KEY');
+$response = $youtube->listCommentThreads([
+    'part'       => 'id',
+    'videoId'    => 'z131gtcqbqbft5y3x22jfvmoakf3ezfsi',
+    'maxResults' => 1,
+]);
+
+print_r($response);
+
+/**
+ * Array
+ * (
+ *     [kind] => youtube#commentThreadListResponse
+ *     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/uN-iOCehYpos4TNPM5gjN8UB1xY"
+ *     [nextPageToken] => Cg0Qr9vwvY3AxgIgACgBEhQIABDIrYirubDGAhjIrYirubDGAhgCIAE=
+ *     [pageInfo] => Array
+ *         (
+ *             [resultsPerPage] => 1
+ *         )
+ *     [items] => Array
+ *         (
+ *             [0] => Array
+ *                 (
+ *                     [kind] => youtube#commentThread
+ *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/7sgGL5ZZoBDiABrwCZQ4HWh7TPs"
+ *                     [id] => z12lxfwxtzqwhdfrq04cgnqowyusftk4esk0k
+ *                 )
+ *         )
  * )
  */
 ```

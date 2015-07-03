@@ -160,6 +160,38 @@ class YouTube
     }
 
     /**
+     * Returns a list of comment threads that match the request criteria.
+     *
+     * For more in-depth info check out the YouTube API documentation at
+     * https://developers.google.com/youtube/v3/docs/commentThreads/list.
+     *
+     * @access  public
+     * @param   array   $parameters An array of parameters to pass to the API.
+     * @throws  \InvalidArgumentException
+     * @return  array
+     */
+    public function listCommentThreads($parameters)
+    {
+        $this->apiUri   = $this->baseUri . '/commentThreads';
+        $this->filters  = [
+            'allThreadsRelatedToChannelId',
+            'channelId',
+            'id',
+            'videoId',
+        ];
+
+        if (empty($parameters) || !isset($parameters['part'])) {
+            throw new \InvalidArgumentException(
+                'Missing the required "part" parameter.'
+            );
+        }
+
+        $response = $this->callApi($parameters);
+
+        return json_decode($response, true);
+    }
+
+    /**
      * Perform a cURL call to the YouTube API using the $parameters payload and
      * of method $method.
      *
