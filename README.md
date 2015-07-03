@@ -45,7 +45,6 @@ print_r($response);
  *             [totalResults] => 9
  *             [resultsPerPage] => 1
  *         )
- *
  *     [items] => Array
  *         (
  *             [0] => Array
@@ -54,9 +53,7 @@ print_r($response);
  *                     [etag] => "eYE31WLho912TfxEBDDRSwEQ5Ms/WcC5XzEdaxXmLhsuZ1s9_CBqix8"
  *                     [id] => VTE0MzQwNDMxMDYxNDAxNDY3MTQzNjM5MjA=
  *                 )
- *
  *         )
- *
  * )
  */
 ```
@@ -95,7 +92,6 @@ print_r($response);
  *             [totalResults] => 11
  *             [resultsPerPage] => 1
  *         )
- *
  *     [items] => Array
  *         (
  *             [0] => Array
@@ -104,9 +100,7 @@ print_r($response);
  *                     [etag] => "eYE31WLho912TfxEBDDRSwEQ5Ms/sgkeX05nlECWsuF-d1WorqhxJVQ"
  *                     [id] => UCF0pVplsI8R5kcAqgtoRqoA
  *                 )
- *
  *         )
- *
  * )
  */
 ```
@@ -152,11 +146,8 @@ print_r($response);
  *                            [channelId] => UCVHFbqXqoYvEWM1Ddxl0QDg
  *                            [position] => 0
  *                        )
- *
  *                )
- *
  *         )
- *
  * )
  */
 ```
@@ -188,34 +179,15 @@ print_r($response);
  * Array
  * (
  *     [kind] => youtube#commentListResponse
- *     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/KvDc44tTYD2s9ds4AFEycO3Q8bc"
+ *     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/my2z1KHSZNVuD41bSHIrxgS8G-U"
  *     [items] => Array
  *         (
  *             [0] => Array
  *                 (
  *                     [kind] => youtube#comment
- *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/NT_mT1tS97oiFpYL9u0uAlkaJzI"
+ *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/4Lac9A_R38HxodU7PaftM_J1BaY"
  *                     [id] => z131gtcqbqbft5y3x22jfvmoakf3ezfsi
- *                     [snippet] => Array
- *                         (
- *                             [textDisplay] => Check it out! Google came by our office to film an <span class="proflinkWrapper"><span class="proflinkPrefix">+</span><a class="proflink" href="https://plus.google.com/104629412415657030658" oid="104629412415657030658">Android</a></span> case study about Trello.
- *                             [authorDisplayName] => Trello
- *                             [authorProfileImageUrl] => https://lh3.googleusercontent.com/-sq03Zg4NAlg/AAAAAAAAAAI/AAAAAAAABQg/UiifHc3dYCo/photo.jpg?sz=50
- *                             [authorChannelUrl] => http://www.youtube.com/channel/UCRcOkXoOrU6sN1yCz20VmQw
- *                             [authorChannelId] => Array
- *                                 (
- *                                     [value] => UCRcOkXoOrU6sN1yCz20VmQw
- *                                 )
- *                             [authorGoogleplusProfileUrl] => https://plus.google.com/103127084407107005900
- *                             [canRate] =>
- *                             [viewerRating] => none
- *                             [likeCount] => 55
- *                             [publishedAt] => 2015-06-11T19:18:14.117Z
- *                             [updatedAt] => 2015-06-11T19:18:14.117Z
- *                         )
- *
  *                 )
- *
  *         )
  *
  * )

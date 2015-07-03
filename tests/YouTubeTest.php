@@ -39,7 +39,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     public function testListActivities()
     {
         $response = $this->youtube->listActivities([
-            'part'      => 'snippet',
+            'part'      => 'id',
             'channelId' => 'UCVHFbqXqoYvEWM1Ddxl0QDg'
         ]);
 
@@ -67,7 +67,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     public function testListChannels()
     {
         $response = $this->youtube->listChannels([
-            'part'          => 'snippet',
+            'part'          => 'id',
             'categoryId'    => 'GCQmVzdCBvZiBZb3VUdWJl'
         ]);
 
@@ -95,7 +95,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     public function testListChannelSections()
     {
         $response = $this->youtube->listChannelSections([
-            'part'      => 'snippet',
+            'part'      => 'id',
             'channelId' => 'UCVHFbqXqoYvEWM1Ddxl0QDg'
         ]);
 
@@ -123,7 +123,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     public function testListComments()
     {
         $response = $this->youtube->listComments([
-            'part'  => 'snippet',
+            'part'  => 'id',
             'id'    => 'z131gtcqbqbft5y3x22jfvmoakf3ezfsi'
         ]);
 
