@@ -19,7 +19,9 @@ For more information, take a look at [https://developers.google.com/youtube/v3/d
 ```php
 <?php
 
-use Incremental\Youtube\YouTube;
+require_once('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
 
 $youtube = new YouTube('YOUR_API_KEY');
 $response = $youtube->listActivities([
@@ -67,7 +69,9 @@ For more information, take a look at [https://developers.google.com/youtube/v3/d
 ```php
 <?php
 
-use Incremental\Youtube\YouTube;
+require_once('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
 
 $youtube = new YouTube('YOUR_API_KEY');
 $response = $youtube->listChannels([
