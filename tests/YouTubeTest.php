@@ -157,4 +157,32 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($response['kind'], 'youtube#commentThreadListResponse');
     }
+
+    /**
+     * @expectedException           \InvalidArgumentException
+     * @expectedExceptionMessage    Missing the required "part" parameter.
+     */
+    public function testListGuideCategoriesThrowsExceptionOnMissingPartParameter()
+    {
+        $this->youtube->listGuideCategories([]);
+    }
+
+    /**
+     * @expectedException           \InvalidArgumentException
+     * @expectedExceptionMessage    Missing a required filter parameter
+     */
+    public function testListGuideCategoriesThrowsExceptionOnMissingFilterParameter()
+    {
+        $this->youtube->listGuideCategories(['part' => 'id']);
+    }
+
+    public function testListGuideCategories()
+    {
+        $response = $this->youtube->listGuideCategories([
+            'part'          => 'id',
+            'regionCode'    => 'NL'
+        ]);
+
+        $this->assertEquals($response['kind'], 'youtube#guideCategoryListResponse');
+    }
 }

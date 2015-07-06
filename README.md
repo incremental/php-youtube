@@ -11,6 +11,7 @@ This library aims at providing an easy-to-use wrapper for the non-OAuth YouTube 
 - [youtube.channelSections.list](#youtubechannelsectionslist)
 - [youtube.comments.list](#youtubecommentslist)
 - [youtube.commentThreads.list](#youtubecommentthreadslist)
+- [youtube.guideCategories.list](#youtubeguidecategorieslist)
 
 ---
 
@@ -234,6 +235,46 @@ print_r($response);
  *                     [kind] => youtube#commentThread
  *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/7sgGL5ZZoBDiABrwCZQ4HWh7TPs"
  *                     [id] => z12lxfwxtzqwhdfrq04cgnqowyusftk4esk0k
+ *                 )
+ *         )
+ * )
+ */
+```
+
+---
+
+### youtube.guidecategories.list
+Returns a list of categories that can be associated with YouTube channels.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/guideCategories/list](https://developers.google.com/youtube/v3/docs/guideCategories/list).
+
+```php
+<?php
+
+require_once('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
+
+$youtube = new YouTube('YOUR_API_KEY');
+$response = $youtube->listGuideCategories([
+    'part'       => 'id',
+    'regionCode' => 'NL',
+]);
+
+print_r($response);
+
+/**
+ * Array
+ * (
+ *     [kind] => youtube#guideCategoryListResponse
+ *     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/MnjXoNFdOgOUSRqlgJ3cE1jYWvg"
+ *     [items] => Array
+ *         (
+ *             [0] => Array
+ *                 (
+ *                     [kind] => youtube#guideCategory
+ *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/ei31gUqEQxOtnflo47cy0YAa_MM"
+ *                     [id] => GCQmVzdCBvZiBZb3VUdWJl
  *                 )
  *         )
  * )
