@@ -185,4 +185,22 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($response['kind'], 'youtube#guideCategoryListResponse');
     }
+
+    /**
+     * @expectedException           \InvalidArgumentException
+     * @expectedExceptionMessage    Missing the required "part" parameter.
+     */
+    public function testListI18nLanguagesThrowsExceptionOnMissingPartParameter()
+    {
+        $this->youtube->listI18nLanguages([]);
+    }
+
+    public function testListI18nLanguages()
+    {
+        $response = $this->youtube->listI18nLanguages([
+            'part'          => 'id'
+        ]);
+
+        $this->assertEquals($response['kind'], 'youtube#i18nLanguageListResponse');
+    }
 }

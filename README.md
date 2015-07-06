@@ -12,6 +12,7 @@ This library aims at providing an easy-to-use wrapper for the non-OAuth YouTube 
 - [youtube.comments.list](#youtubecommentslist)
 - [youtube.commentThreads.list](#youtubecommentthreadslist)
 - [youtube.guideCategories.list](#youtubeguidecategorieslist)
+- [youtube.18nLanguages.list](#youtubei18nlanguageslist)
 
 ---
 
@@ -275,6 +276,45 @@ print_r($response);
  *                     [kind] => youtube#guideCategory
  *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/ei31gUqEQxOtnflo47cy0YAa_MM"
  *                     [id] => GCQmVzdCBvZiBZb3VUdWJl
+ *                 )
+ *         )
+ * )
+ */
+```
+
+---
+
+### youtube.i18nLanguages.list
+Returns a list of application languages that the YouTube website supports.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/i18nLanguages/list](https://developers.google.com/youtube/v3/docs/i18nLanguages/list).
+
+```php
+<?php
+
+require_once('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
+
+$youtube = new YouTube('YOUR_API_KEY');
+$response = $youtube->listI18nLanguages([
+    'part'       => 'id',
+]);
+
+print_r($response);
+
+/**
+ * Array
+ * (
+ *     [kind] => youtube#i18nLanguageListResponse
+ *     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/wD1Vj4GH0IYKZJOUyuxIoquCcHs"
+ *     [items] => Array
+ *         (
+ *             [0] => Array
+ *                 (
+ *                     [kind] => youtube#i18nLanguage
+ *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/8KwAGX0iEJffc-VyQgBD2mnlbac"
+ *                     [id] => af
  *                 )
  *         )
  * )
