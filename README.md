@@ -15,6 +15,7 @@ This library aims at providing an easy-to-use wrapper for the non-OAuth YouTube 
 - [youtube.18nLanguages.list](#youtubei18nlanguageslist)
 - [youtube.18nRegions.list](#youtubei18nregionslist)
 - [youtube.playlistItems.list](#youtubeplaylistitemslist)
+- [youtube.playlists.list](#youtubeplaylistslist)
 
 ---
 
@@ -405,6 +406,54 @@ print_r($response);
  *                     [kind] => youtube#playlistItem
  *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/I3VVE1hQi9lf5TYMwq0PobNjGqo"
  *                     [id] => PLqKOsfcZLLdlAo54wkuLqIjRo-SaPCQYyZicRPdwWWRg
+ *                 )
+ *         )
+ * )
+ */
+```
+
+---
+
+### youtube.playlists.list
+Returns a collection of playlists that match the API request parameters.
+For example, you can retrieve one or more playlists by their unique IDs.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/playlists/list](https://developers.google.com/youtube/v3/docs/playlists/list).
+
+```php
+<?php
+
+require_once('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
+
+$youtube = new YouTube('YOUR_API_KEY');
+$response = $youtube->listPlaylists([
+    'part'          => 'id',
+    'playlistId'    => 'PLWz5rJ2EKKc9ofd2f-_-xmUi07wIGZa1c',
+    'maxResults'    => 1,
+]);
+
+print_r($response);
+
+/**
+ * Array
+ * (
+ *     [kind] => youtube#playlistListResponse
+ *     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/rj5IqmLz71fFu6p4mMXlJmpJfxM"
+ *     [nextPageToken] => CAEQAA
+ *     [pageInfo] => Array
+ *         (
+ *             [totalResults] => 55
+ *             [resultsPerPage] => 1
+ *         )
+ *     [items] => Array
+ *         (
+ *             [0] => Array
+ *                 (
+ *                     [kind] => youtube#playlist
+ *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/ZF8lhREd15KN22t7926-2iNFGd0"
+ *                     [id] => PLWz5rJ2EKKc-rru_xVZNamRDaQfHr6ebv
  *                 )
  *         )
  * )

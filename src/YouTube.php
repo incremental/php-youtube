@@ -308,6 +308,37 @@ class YouTube
     }
 
     /**
+     * Returns a collection of playlists that match the API request parameters.
+     * For example, you can retrieve one or more playlists by their unique IDs.
+     *
+     * For more in-depth info check out the YouTube API documentation at
+     * https://developers.google.com/youtube/v3/docs/playlists/list.
+     *
+     * @access  public
+     * @param   array   $parameters An array of parameters to pass to the API.
+     * @throws  \InvalidArgumentException
+     * @return  array
+     */
+    public function listPlaylists($parameters)
+    {
+        $this->apiUri   = $this->baseUri . '/playlists';
+        $this->filters  = [
+            'channelId',
+            'id',
+        ];
+
+        if (empty($parameters) || !isset($parameters['part'])) {
+            throw new \InvalidArgumentException(
+                'Missing the required "part" parameter.'
+            );
+        }
+
+        $response = $this->callApi($parameters);
+
+        return json_decode($response, true);
+    }
+
+    /**
      * Perform a cURL call to the YouTube API using the $parameters payload and
      * of method $method.
      *
