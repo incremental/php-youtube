@@ -40,7 +40,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     {
         $response = $this->youtube->listActivities([
             'part'      => 'id',
-            'channelId' => 'UCVHFbqXqoYvEWM1Ddxl0QDg'
+            'channelId' => 'UCVHFbqXqoYvEWM1Ddxl0QDg',
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#activityListResponse');
@@ -68,7 +68,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     {
         $response = $this->youtube->listChannels([
             'part'          => 'id',
-            'categoryId'    => 'GCQmVzdCBvZiBZb3VUdWJl'
+            'categoryId'    => 'GCQmVzdCBvZiBZb3VUdWJl',
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#channelListResponse');
@@ -96,7 +96,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     {
         $response = $this->youtube->listChannelSections([
             'part'      => 'id',
-            'channelId' => 'UCVHFbqXqoYvEWM1Ddxl0QDg'
+            'channelId' => 'UCVHFbqXqoYvEWM1Ddxl0QDg',
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#channelSectionListResponse');
@@ -124,7 +124,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     {
         $response = $this->youtube->listComments([
             'part'  => 'id',
-            'id'    => 'z131gtcqbqbft5y3x22jfvmoakf3ezfsi'
+            'id'    => 'z131gtcqbqbft5y3x22jfvmoakf3ezfsi',
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#commentListResponse');
@@ -152,7 +152,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     {
         $response = $this->youtube->listCommentThreads([
             'part'      => 'id',
-            'videoId'   => 'TieksFvD-7o'
+            'videoId'   => 'TieksFvD-7o',
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#commentThreadListResponse');
@@ -180,7 +180,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     {
         $response = $this->youtube->listGuideCategories([
             'part'          => 'id',
-            'regionCode'    => 'NL'
+            'regionCode'    => 'NL',
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#guideCategoryListResponse');
@@ -198,7 +198,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     public function testListI18nLanguages()
     {
         $response = $this->youtube->listI18nLanguages([
-            'part'          => 'id'
+            'part'          => 'id',
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#i18nLanguageListResponse');
@@ -216,7 +216,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     public function testListI18nRegions()
     {
         $response = $this->youtube->listI18nRegions([
-            'part'          => 'id'
+            'part'          => 'id',
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#i18nRegionListResponse');

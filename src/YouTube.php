@@ -293,7 +293,7 @@ class YouTube
         $this->apiUri   = $this->baseUri . '/playlistItems';
         $this->filters  = [
             'id',
-            'playlistId'
+            'playlistId',
         ];
 
         if (empty($parameters) || !isset($parameters['part'])) {
