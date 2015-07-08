@@ -160,10 +160,10 @@ print_r($response);
 
 ---
 
-### youtube.channelsections.list
-Returns a list of channelSection resources that match the request criteria.
+### youtube.comments.list
+Returns a list of comments that match the request criteria.
 
-For more information, take a look at [https://developers.google.com/youtube/v3/docs/channelSections/list](https://developers.google.com/youtube/v3/docs/channelSections/list).
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/comments/list](https://developers.google.com/youtube/v3/docs/comments/list).
 
 ```php
 <?php
