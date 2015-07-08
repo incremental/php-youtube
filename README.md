@@ -19,6 +19,7 @@ This library aims at providing an easy-to-use wrapper for the non-OAuth YouTube 
 - [youtube.search.list](#youtubesearchlist)
 - [youtube.subscriptions.list](#youtubesubscriptionslist)
 - [youtube.videocategories.list](#youtubevideocategorieslist)
+- [youtube.videos.list](#youtubevideoslist)
 
 ---
 
@@ -600,6 +601,54 @@ print_r($response);
  *                     [id] => 1
  *                 )
  *         )
+ * )
+ */
+```
+
+---
+
+### youtube.videos.list
+Returns a list of videos that match the API request parameters.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/videos/list](https://developers.google.com/youtube/v3/docs/videos/list).
+
+```php
+<?php
+
+require_once ('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
+
+$youtube = new YouTube('YOUR_API_KEY');
+$response = $youtube->listVideos([
+    'part'          => 'id',
+    'chart'         => 'mostPopular',
+    'maxResults'    => 1,
+]);
+
+print_r($response);
+
+/**
+ * Array
+ * (
+ *    [kind] => youtube#videoListResponse
+ *    [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/5vKizhjk_5NDC69NYkSsP90NfQ4"
+ *    [nextPageToken] => CAUQAA
+ *    [pageInfo] => Array
+ *        (
+ *            [totalResults] => 30
+ *            [resultsPerPage] => 1
+ *        )
+ *
+ *    [items] => Array
+ *        (
+ *            [0] => Array
+ *                (
+ *                    [kind] => youtube#video
+ *                    [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/D0_V-FNcsvu5O5nb4WVaywcVcNY"
+ *                    [id] => PLlMTn_Jzok
+ *                )
+ *        )
  * )
  */
 ```
