@@ -13,6 +13,7 @@ This library aims at providing an easy-to-use wrapper for the non-OAuth YouTube 
 - [youtube.commentThreads.list](#youtubecommentthreadslist)
 - [youtube.guideCategories.list](#youtubeguidecategorieslist)
 - [youtube.18nLanguages.list](#youtubei18nlanguageslist)
+- [youtube.18nRegions.list](#youtubei18nregionslist)
 
 ---
 
@@ -315,6 +316,45 @@ print_r($response);
  *                     [kind] => youtube#i18nLanguage
  *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/8KwAGX0iEJffc-VyQgBD2mnlbac"
  *                     [id] => af
+ *                 )
+ *         )
+ * )
+ */
+```
+
+---
+
+### youtube.i18nRegions.list
+Returns a list of content regions that the YouTube website supports.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/i18nRegions/list](https://developers.google.com/youtube/v3/docs/i18nRegions/list).
+
+```php
+<?php
+
+require_once('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
+
+$youtube = new YouTube('YOUR_API_KEY');
+$response = $youtube->listI18nRegions([
+    'part'       => 'id',
+]);
+
+print_r($response);
+
+/**
+ * Array
+ * (
+ *     [kind] => youtube#i18nRegionListResponse
+ *     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/z8_sDbXXqFQ0QvdJ-9cH9JGf4o4"
+ *     [items] => Array
+ *         (
+ *             [0] => Array
+ *                 (
+ *                     [kind] => youtube#i18nRegion
+ *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/1K5qc4QfRqfgcFVQseK1hTW9b2c"
+ *                     [id] => US
  *                 )
  *         )
  * )
