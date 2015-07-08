@@ -104,3 +104,80 @@ print_r($response);
  * )
  */
 ```
+
+### youtube.videos.list
+Returns a collection of the most populair videos.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/videos/list](https://developers.google.com/youtube/v3/docs/videos/list).
+
+```php
+<?php
+
+require_once ('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
+
+	$youtube = new YouTube('AIzaSyAw2AcnJ_dH6raxt_yIIw_N4_WUbuxYnps');
+	$response = $youtube->listVideos([
+	    'part'       => 'id',
+	    'chart'		 => 'mostPopular' 
+	    ]);
+
+	print_r($response);
+
+?>
+
+/**
+* Array
+* (
+*    [kind] => youtube#videoListResponse
+*    [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/5vKizhjk_5NDC69NYkSsP90NfQ4"
+*    [nextPageToken] => CAUQAA
+*    [pageInfo] => Array
+*        (
+*            [totalResults] => 30
+*            [resultsPerPage] => 5
+*        )
+*
+*    [items] => Array
+*        (
+*            [0] => Array
+*                (
+*                    [kind] => youtube#video
+*                    [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/D0_V-FNcsvu5O5nb4WVaywcVcNY"
+*                    [id] => PLlMTn_Jzok
+*                )
+*
+*            [1] => Array
+*                (
+*                    [kind] => youtube#video
+*                    [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/WH2KtvjPyS7iC7QdoJAy1jj-Ts8"
+*                    [id] => Y1ndZnfZdZM
+*                )
+*
+*            [2] => Array
+*                (
+*                    [kind] => youtube#video
+*                    [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/cCAOtOCZXKsavHtC-yOr-KbegfU"
+*                    [id] => V3Y8IU6st5E
+*                )
+*
+*            [3] => Array
+*                (
+*                    [kind] => youtube#video
+*                    [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/8AgfXIMM0eVoyQnhfoP2UtF71N4"
+*                    [id] => rVPlMM_aSn4
+*                )
+*
+*            [4] => Array
+*                (
+*                    [kind] => youtube#video
+*                    [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/5YtS-hLGeIMFoJHVfvS3b7CVfyc"
+*                    [id] => vQBWyLSbnw4
+*                )
+*
+*        )
+*
+* )
+ */
+```
