@@ -39,8 +39,9 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     public function testListActivities()
     {
         $response = $this->youtube->listActivities([
-            'part'      => 'id',
-            'channelId' => 'UCVHFbqXqoYvEWM1Ddxl0QDg',
+            'part'          => 'id',
+            'channelId'     => 'UCVHFbqXqoYvEWM1Ddxl0QDg',
+            'maxResults'    => 1,
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#activityListResponse');
@@ -69,6 +70,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
         $response = $this->youtube->listChannels([
             'part'          => 'id',
             'categoryId'    => 'GCQmVzdCBvZiBZb3VUdWJl',
+            'maxResults'    => 1,
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#channelListResponse');
@@ -123,8 +125,9 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     public function testListComments()
     {
         $response = $this->youtube->listComments([
-            'part'  => 'id',
-            'id'    => 'z131gtcqbqbft5y3x22jfvmoakf3ezfsi',
+            'part'          => 'id',
+            'id'            => 'z131gtcqbqbft5y3x22jfvmoakf3ezfsi',
+            'maxResults'    => 1,
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#commentListResponse');
@@ -151,8 +154,9 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
     public function testListCommentThreads()
     {
         $response = $this->youtube->listCommentThreads([
-            'part'      => 'id',
-            'videoId'   => 'TieksFvD-7o',
+            'part'          => 'id',
+            'videoId'       => 'TieksFvD-7o',
+            'maxResults'    => 1,
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#commentThreadListResponse');
@@ -245,6 +249,7 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
         $response = $this->youtube->listPlaylistItems([
             'part'          => 'id',
             'playlistId'    => 'PLWz5rJ2EKKc9ofd2f-_-xmUi07wIGZa1c',
+            'maxResults'    => 1,
         ]);
 
         $this->assertEquals($response['kind'], 'youtube#playlistItemListResponse');
