@@ -288,6 +288,27 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
      * @expectedException           \InvalidArgumentException
      * @expectedExceptionMessage    Missing the required "part" parameter.
      */
+    public function testListSearchThrowsExceptionOnMissingPartParameter()
+    {
+        $this->youtube->listSearch([]);
+    }
+
+    public function testListSearch()
+    {
+        $response = $this->youtube->listSearch([
+            'part'          => 'id',
+            'channelId'     => 'UC_x5XG1OV2P6uZZ5FSM9Ttw',
+            'q'             => 'Google I/O',
+            'maxResults'    => 1,
+        ]);
+
+        $this->assertEquals($response['kind'], 'youtube#searchListResponse');
+    }
+
+    /**
+     * @expectedException           \InvalidArgumentException
+     * @expectedExceptionMessage    Missing the required "part" parameter.
+     */
     public function testListSubscriptionsThrowsExceptionOnMissingPartParameter()
     {
         $this->youtube->listSubscriptions([]);

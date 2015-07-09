@@ -339,6 +339,36 @@ class YouTube
     }
 
     /**
+     * Returns a collection of search results that match the query parameters
+     * specified in the API request. By default, a search result set identifies
+     * matching video, channel, and playlist resources, but you can also configure
+     * queries to only retrieve a specific type of resource.
+     *
+     * For more in-depth info check out the YouTube API documentation at
+     * https://developers.google.com/youtube/v3/docs/search/list.
+     *
+     * @access  public
+     * @param   array   $parameters An array of parameters to pass to the API.
+     * @throws  \InvalidArgumentException
+     * @return  array
+     */
+    public function listSearch($parameters)
+    {
+        $this->apiUri           = $this->baseUri . '/search';
+        $this->filters          = [];
+
+        if (empty($parameters) || !isset($parameters['part'])) {
+            throw new \InvalidArgumentException(
+                'Missing the required "part" parameter.'
+            );
+        }
+
+        $response = $this->callApi($parameters);
+
+        return json_decode($response, true);
+    }
+
+    /**
      * Returns subscription resources that match the API request criteria.
      *
      * For more in-depth info check out the YouTube API documentation at

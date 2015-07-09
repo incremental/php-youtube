@@ -16,6 +16,7 @@ This library aims at providing an easy-to-use wrapper for the non-OAuth YouTube 
 - [youtube.18nRegions.list](#youtubei18nregionslist)
 - [youtube.playlistItems.list](#youtubeplaylistitemslist)
 - [youtube.playlists.list](#youtubeplaylistslist)
+- [youtube.search.list](#youtubesearchlist)
 - [youtube.subscriptions.list](#youtubesubscriptionslist)
 - [youtube.videocategories.list](#youtubevideocategorieslist)
 
@@ -456,6 +457,60 @@ print_r($response);
  *                     [kind] => youtube#playlist
  *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/ZF8lhREd15KN22t7926-2iNFGd0"
  *                     [id] => PLWz5rJ2EKKc-rru_xVZNamRDaQfHr6ebv
+ *                 )
+ *         )
+ * )
+ */
+```
+
+---
+
+### youtube.search.list
+Returns a collection of search results that match the query parameters
+specified in the API request. By default, a search result set identifies
+matching video, channel, and playlist resources, but you can also configure
+queries to only retrieve a specific type of resource.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/search/list](https://developers.google.com/youtube/v3/docs/search/list).
+
+```php
+<?php
+
+require_once('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
+
+$youtube = new YouTube('YOUR_API_KEY');
+$response = $youtube->listSearch([
+    'part'          => 'id',
+    'channelId'     => 'UC_x5XG1OV2P6uZZ5FSM9Ttw',
+    'maxResults'    => 1,
+]);
+
+print_r($response);
+
+/**
+ * Array
+ * (
+ *     [kind] => youtube#searchListResponse
+ *     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/G4Uurrtcf18axqH_LSyFmuhf2X4"
+ *     [nextPageToken] => CAEQAA
+ *     [pageInfo] => Array
+ *         (
+ *             [totalResults] => 3988
+ *             [resultsPerPage] => 1
+ *         )
+ *     [items] => Array
+ *         (
+ *             [0] => Array
+ *                 (
+ *                     [kind] => youtube#searchResult
+ *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/q4hYefapiMoagc7b_3bYaVZvSJo"
+ *                     [id] => Array
+ *                         (
+ *                             [kind] => youtube#channel
+ *                             [channelId] => UC_x5XG1OV2P6uZZ5FSM9Ttw
+ *                         )
  *                 )
  *         )
  * )
