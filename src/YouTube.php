@@ -339,6 +339,36 @@ class YouTube
     }
 
     /**
+     * Returns subscription resources that match the API request criteria.
+     *
+     * For more in-depth info check out the YouTube API documentation at
+     * https://developers.google.com/youtube/v3/docs/subscriptions/list.
+     *
+     * @access  public
+     * @param   array   $parameters An array of parameters to pass to the API.
+     * @throws  \InvalidArgumentException
+     * @return  array
+     */
+    public function listSubscriptions($parameters)
+    {
+        $this->apiUri   = $this->baseUri . '/subscriptions';
+        $this->filters  = [
+            'channelId',
+            'id',
+        ];
+
+        if (empty($parameters) || !isset($parameters['part'])) {
+            throw new \InvalidArgumentException(
+                'Missing the required "part" parameter.'
+            );
+        }
+
+        $response = $this->callApi($parameters);
+
+        return json_decode($response, true);
+    }
+
+    /**
      * Perform a cURL call to the YouTube API using the $parameters payload and
      * of method $method.
      *

@@ -16,6 +16,7 @@ This library aims at providing an easy-to-use wrapper for the non-OAuth YouTube 
 - [youtube.18nRegions.list](#youtubei18nregionslist)
 - [youtube.playlistItems.list](#youtubeplaylistitemslist)
 - [youtube.playlists.list](#youtubeplaylistslist)
+- [youtube.subscriptions.list](#youtubesubscriptionslist)
 
 ---
 
@@ -454,6 +455,53 @@ print_r($response);
  *                     [kind] => youtube#playlist
  *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/ZF8lhREd15KN22t7926-2iNFGd0"
  *                     [id] => PLWz5rJ2EKKc-rru_xVZNamRDaQfHr6ebv
+ *                 )
+ *         )
+ * )
+ */
+```
+
+---
+
+### youtube.subscriptions.list
+Returns subscription resources that match the API request criteria.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/subscriptions/list](https://developers.google.com/youtube/v3/docs/subscriptions/list).
+
+```php
+<?php
+
+require_once('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
+
+$youtube = new YouTube('YOUR_API_KEY');
+$response = $youtube->listSubscriptions([
+    'part'          => 'id',
+    'channelId'     => 'UC_x5XG1OV2P6uZZ5FSM9Ttw',
+    'maxResults'    => 1,
+]);
+
+print_r($response);
+
+/**
+ * Array
+ * (
+ *     [kind] => youtube#subscriptionListResponse
+ *     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/Tjfg1JrIT4dfOWI4p2GAh62RkuM"
+ *     [nextPageToken] => CAEQAA
+ *     [pageInfo] => Array
+ *         (
+ *             [totalResults] => 44
+ *             [resultsPerPage] => 1
+ *         )
+ *     [items] => Array
+ *         (
+ *             [0] => Array
+ *                 (
+ *                     [kind] => youtube#subscription
+ *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/AMk7GKpqy6n7dqRBhb9OkS9yCrg"
+ *                     [id] => MpajmvGNexIkHC8F7y2fiZ-2BKHlv54sys7NqgqY_ak
  *                 )
  *         )
  * )

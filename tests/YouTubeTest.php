@@ -283,4 +283,33 @@ class YouTubeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($response['kind'], 'youtube#playlistListResponse');
     }
+
+    /**
+     * @expectedException           \InvalidArgumentException
+     * @expectedExceptionMessage    Missing the required "part" parameter.
+     */
+    public function testListSubscriptionsThrowsExceptionOnMissingPartParameter()
+    {
+        $this->youtube->listSubscriptions([]);
+    }
+
+    /**
+     * @expectedException           \InvalidArgumentException
+     * @expectedExceptionMessage    Missing a required filter parameter
+     */
+    public function testListSubscriptionsThrowsExceptionOnMissingFilterParameter()
+    {
+        $this->youtube->listSubscriptions(['part' => 'id']);
+    }
+
+    public function testListSubscriptions()
+    {
+        $response = $this->youtube->listSubscriptions([
+            'part'      => 'id',
+            'channelId' => 'UC_x5XG1OV2P6uZZ5FSM9Ttw',
+            'maxResults' => 1,
+        ]);
+
+        $this->assertEquals($response['kind'], 'youtube#subscriptionListResponse');
+    }
 }
