@@ -17,6 +17,7 @@ This library aims at providing an easy-to-use wrapper for the non-OAuth YouTube 
 - [youtube.playlistItems.list](#youtubeplaylistitemslist)
 - [youtube.playlists.list](#youtubeplaylistslist)
 - [youtube.subscriptions.list](#youtubesubscriptionslist)
+- [youtube.videocategories.list](#youtubevideocategorieslist)
 
 ---
 
@@ -502,6 +503,46 @@ print_r($response);
  *                     [kind] => youtube#subscription
  *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/AMk7GKpqy6n7dqRBhb9OkS9yCrg"
  *                     [id] => MpajmvGNexIkHC8F7y2fiZ-2BKHlv54sys7NqgqY_ak
+ *                 )
+ *         )
+ * )
+ */
+```
+
+---
+
+### youtube.videocategories.list
+Returns a list of categories that can be associated with YouTube videos.
+
+For more information, take a look at [https://developers.google.com/youtube/v3/docs/videoCategories/list](https://developers.google.com/youtube/v3/docs/videoCategories/list).
+
+```php
+<?php
+
+require_once('vendor/autoload.php');
+
+use Incremental\YouTube\YouTube;
+
+$youtube = new YouTube('YOUR_API_KEY');
+$response = $youtube->listVideoCategories([
+    'part'          => 'id',
+    'regionCode'    => 'NL',
+]);
+
+print_r($response);
+
+/**
+ * Array
+ * (
+ *     [kind] => youtube#videoCategoryListResponse
+ *     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/d2nxEqpmtIzd-HWoYLbxZeG5Ig8"
+ *     [items] => Array
+ *         (
+ *             [0] => Array
+ *                 (
+ *                     [kind] => youtube#videoCategory
+ *                     [etag] => "Y3xTLFF3RLtHXX85JBgzzgp2Enw/XLk_qpc4aA4EW__lDxBJzY9kMIg"
+ *                     [id] => 1
  *                 )
  *         )
  * )
